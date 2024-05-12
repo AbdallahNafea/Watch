@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon"href="Logo.jpg">
+   <link rel="stylesheet" href="style.css">
+   <title>Nafe3</title>
+</head>
+<body>
+   <div class="clock">
+      <p id="date"></p>
+      <p id="time"></p>
+   </div>
+<!-- to know time and date and day  -->
+   <script>
+      const WEEK = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+
+      function updateTime(){
+         var now = new Date();
+
+         document.getElementById("time").innerHTML = 
+               ZeroPadding(now.getHours(), 2) + ":" +
+               ZeroPadding(now.getMinutes(), 2) + ":" +
+               ZeroPadding(now.getSeconds(), 2);
+
+         document.getElementById("date").innerText = 
+               now.getFullYear() + "-" +
+               ZeroPadding(now.getMonth() + 1, 2) + "-" +
+               ZeroPadding(now.getDate() , 2) + " " +
+               WEEK[now.getDay()];
+      }
+
+      updateTime();
+      setInterval(updateTime, 1000);
+
+      function ZeroPadding(num, digit) {
+         return String(num).padStart(digit, '0');
+      }
+   </script>
+</body>
+</html>  
